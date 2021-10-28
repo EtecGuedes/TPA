@@ -1,0 +1,38 @@
+Exercício 4: Escreva um programa que armazene os números de 1 a 25 em uma matriz 5x5 e ao final exiba apenas os valores das diagonais desta matriz.
+
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		int[,] matriz = new int[5,5];
+		int numero = 1, diagonal = 0;
+		
+		for(int a = 0; a < 5; a++) {
+			for(int b = 0; b < 5; b++) {
+				matriz[a,b] = numero;
+				numero++;
+			}
+		}
+		
+		Console.WriteLine("Os números da primeira diagonal são:");
+		for(int b = 0; b < 5; b++) {
+			if(b == 4) {
+				Console.Write(matriz[diagonal,b] + ".\n");
+			} else
+			Console.Write(matriz[diagonal,b] + ", ");
+			diagonal++;
+		}
+		
+		diagonal = 0;
+		Console.WriteLine("Os números da segunda diagonal são:");
+		for(int b = 4; b >= 0; b--) {
+			if(b == 0) {
+				Console.Write(matriz[diagonal,b] + ".");
+			} else
+			Console.Write(matriz[diagonal,b] + ", ");
+			diagonal++;
+		}
+	}
+}

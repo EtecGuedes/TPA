@@ -1,0 +1,19 @@
+Exercício 1: Escreva um programa que leia um vetor de 15 números inteiros e exiba ao final apenas os números que estão armazenados nos índicespares do vetor.
+
+using System;
+
+public class Program {
+  public static void Main() {
+    int[] vetor = new int[15];
+
+	for(int a = 0; a<15; a++) {
+		Console.Clear();
+		Console.WriteLine("Digite um número: ");
+		vetor[a] = int.Parse(Console.ReadLine());
+	}
+	Console.Clear();
+	for(int a = 0; a<15; a+=2) {
+		Console.WriteLine(vetor[a]);
+	}
+  }
+}

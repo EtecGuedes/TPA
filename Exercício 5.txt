@@ -1,0 +1,51 @@
+Exercício 5: Escreva um programa que leia o nome de 10 alunos (vetor). Para cada aluno devem ser registradas 3 notas (matriz). Calcular a média das notas de cada aluno e armazenar emum vetor. Ao final deverá ser exibido na tela um relatório com os dados de todos os alunos (nome, notas, media) e também a informação se o aluno foi aprovado ou reprovado (média para aprovação 7,0). Para o caso de aprovado exibir todos os dados do aluno nacor azul, caso contrário exibir os dados na cor vermelha.(Dica: usar os comandos Console.ForegroundColor = ConsoleColor.Red e Console.ForegroundColor = ConsoleColor.Blue)
+
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		string[] nomes = new string[10];
+		int[,] notas = new int[10,3];
+		double[] medias = new double[10];
+		bool[] aprovado = new bool[10];
+		int maior = 0;
+		
+		for(int a = 0; a < 10; a++) {
+			Console.WriteLine("Escreva o nome do aluno {0}:", (a+1));
+			nomes[a] = Console.ReadLine();
+			Console.Clear();
+			for(int b = 0; b < 3; b++) {
+				Console.WriteLine("Digite a nota {0} do aluno {1}:", (b + 1), nomes[a]);
+				notas[a,b] = int.Parse(Console.ReadLine());
+				medias[a] = medias[a] + notas[a,b];
+				Console.Clear();
+			}
+			medias[a] = medias[a] / 3;
+			if(medias[a] >= 7) {
+				aprovado[a] = true;
+			}
+		}
+		for(int a = 0; a < 10; a++) {
+			if(nomes[a].Length > maior) {
+				maior = nomes[a].Length;
+			}
+		}
+		maior = maior - (maior * 2);
+		string format = "{0," + maior + "} {1, -5} {2,-20} {3, -5} {4,-20} {5, -5} {6,-20}";
+		Console.WriteLine(string.Format(format, "Aluno", "|", "Nota", "|", "Média", "|", "Aprovação"));
+		for (int a = 0; a >= maior + -70; a--) {
+			Console.Write("-");
+		}
+		Console.WriteLine("");
+		for (int linha = 0; linha < 10; linha++) {
+			if(aprovado[linha] == true) {
+				Console.ForegroundColor = ConsoleColor.Blue;
+			} else {
+				Console.ForegroundColor = ConsoleColor.Red;
+			}
+			Console.WriteLine(string.Format(format, nomes[linha], "|", notas[linha,0] + ", " + notas[linha,1] + ", " + notas[linha,2] , "|", medias[linha], "|", aprovado[linha]));
+		}
+	}
+}

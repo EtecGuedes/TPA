@@ -1,0 +1,26 @@
+Exercício 3: Escreva um programa que leia uma matriz (3x5 ou 5x3) de 15 números inteiros e exiba ao final a soma dos valores de cada linha que estão armazenados nesta matriz. 
+
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		int[,] matriz = new int[5,3];
+
+		for(int linha = 0; linha < 5; linha++) {
+			for(int coluna = 0; coluna < 3; coluna++) {
+				Console.WriteLine("Digite um valor para a coluna {0} da linha {1}", coluna, linha);
+				matriz[linha,coluna] = int.Parse(Console.ReadLine());
+				Console.Clear();
+			}
+		}
+		for(int linha = 0; linha < 5; linha++) {
+			int soma = 0;
+			for(int coluna = 0; coluna < 3; coluna++) {
+				soma = soma + matriz[linha,coluna];
+			}
+			Console.WriteLine("A soma da linha {0} é {1}", linha, soma);
+		}
+	}
+}
